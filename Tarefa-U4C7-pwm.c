@@ -10,8 +10,7 @@
 #define STEP_DELAY 10  // Tempo de espera entre incrementos (10ms)
 #define STEP_INCREMENT 5   // Passo de incremento do duty cycle (µs)
 
-#define STEP_US 5      // Incremento do ciclo ativo (5µs)
-
+// Variaveis globais
 volatile uint current_pulse = 500;  // Começa em 0°
 volatile bool increasing = true;    // Direção do movimento
 uint slice;
@@ -69,9 +68,5 @@ int main() {
     pwm_set_gpio_level(SERVO_PIN, 2400);
     add_alarm_in_ms(5000, timer_callback_one_shot, NULL, false);
 
-    // Loop infinito (mantém a aplicação rodando)
-    while (1) {
-        tight_loop_contents();
-    }
-    
+    return 0;
 }
